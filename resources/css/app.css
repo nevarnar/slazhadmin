@@ -1,0 +1,545 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "../../node_modules/vue-multiselect/dist/vue-multiselect.min.css";
+@import "../../node_modules/sweetalert2/dist/sweetalert2.min.css";
+@import 'vue2-timepicker/dist/VueTimepicker.css';
+
+
+@font-face {
+  font-family: 'MyWebFont';
+  src:  url('../../public/font/Montserrat/Montserrat-Regular.ttf') format('truetype'),
+        
+}
+.primary-font{
+    font-family: 'MyWebFont';
+}
+
+@layer components {
+    .text-sm {
+        font-size: 0.856rem;
+        line-height: 0.25rem;
+    }
+    .primary-text{
+        font-size: 0.845rem;
+        font-family:'MyWebFont';
+    }
+    .text-ordered {
+        @apply bg-yellow-400 text-white rounded py-1 mx-2.5 text-xs;
+    }
+    .text-received {
+        @apply bg-green-500 text-white rounded py-1 mx-2.5 text-xs;
+    }
+    .text-cancelled {
+        @apply bg-red-500 text-white rounded py-1 mx-2.5 text-xs;
+    }
+    .text-badge {
+        @apply inline-block  py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-gray-200 text-gray-700 rounded-full;
+    }
+    .text-validation {
+        @apply text-[13px] text-red-500 pl-1;
+    }
+    .card-text {
+        @apply whitespace-normal leading-4 py-1.5;
+    }
+    .card-pri-text {
+        @apply card-text text-gray-900;
+    }
+    .card-sec-text {
+        @apply card-text text-gray-500;
+    }
+    .primary-button {
+        @apply px-6 py-2 mr-5 rounded primary-font
+        bg-black text-white font-medium text-sm leading-tight
+        hover:bg-black focus:bg-black focus:outline-none focus:ring-0
+        active:bg-black;
+    }
+    .collapse-btn {
+        @apply inline-block px-6 py-2.5 w-full relative text-left leading-5
+        transition duration-150 ease-in-out focus:outline-none focus:ring-0;
+    }
+    .input-form {
+        @apply block w-full text-gray-600 primary-text
+        bg-white bg-clip-padding border border-solid border-gray-300
+        rounded m-0 focus:text-gray-800 focus:bg-white focus:border-gray-600
+        focus:shadow-none focus:outline-none focus:ring-0;
+    }
+    .size-checked{
+        @apply border border-black rounded-[4px] w-full px-2 text-center block justify-center items-center
+    }
+    .free-size-checked{
+        @apply border border-black rounded-[4px] w-full px-2 text-center block justify-center items-center
+    }
+    .size-unchecked{
+        @apply  w-full px-2 text-center block justify-center items-center border border-transparent
+    }
+    .secondary-input-form{
+        @apply text-[13px] border-b border-solid border-black border-opacity-20 focus:shadow-none focus:outline-none focus:ring-0
+    }
+    .form-textarea {
+        @apply rounded-sm w-2/3 text-left input-form block;
+    }
+    .animated-textarea{
+        @apply focus:shadow-none focus:outline-none rounded-sm active:shadow-none active:outline-none block
+    }
+    .pagination-link {
+        @apply text-[13px] relative block py-1.5 px-3 border outline-none transition-all
+        duration-300;
+    }
+    .active-pagination {
+        @apply bg-blue-600  text-white hover:text-white hover:bg-blue-600 shadow-sm focus:shadow-md;
+    }
+    .normal-pagination {
+        @apply bg-transparent text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none;
+    }
+    .input-check {
+        @apply appearance-none h-4 w-4 border border-gray-300
+        rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600
+        focus:outline-none transition duration-200 my-2 align-top bg-no-repeat
+        bg-center bg-contain cursor-pointer;
+    }
+    .switch {
+        @apply appearance-none w-7 mb-1 -ml-10 rounded-full float-none h-3 align-middle bg-no-repeat bg-contain
+        cursor-pointer shadow-sm bg-gray-300 focus:outline-none;
+    }
+    .prev-next-box {
+        @apply flex-wrap list-none border-b-0 pl-0 mb-8 w-full justify-between;
+    }
+    .primary-modal {
+        @apply fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto;
+    }
+    .modal-box {
+        @apply relative w-auto pointer-events-none;
+    }
+    .content-modal {
+        @apply border-none relative flex flex-col w-96 px-0 pointer-events-auto
+        bg-white bg-clip-padding rounded-md outline-none text-current;
+    }
+
+    .content-modal-normal {
+        @apply border-none relative flex flex-col px-0 pointer-events-auto
+        bg-white bg-clip-padding rounded-md outline-none text-current;
+    }
+    .title-modal{
+        @apply pt-8 px-8 text-base
+    }
+    .modal-footer-container{
+        @apply flex flex-shrink-0 flex-wrap items-center justify-end px-8 pt-0 pb-8
+    }
+    .modal-footer-box{
+        @apply flex flex-shrink-0 flex-wrap items-center
+    }
+    .file-name-box {
+        @apply relative inline-block w-fit border border-gray-400 px-2 mr-4 rounded py-1.5;
+    }
+
+    .cancel-btn {
+        @apply absolute inline-block top-0 right-0 bottom-auto left-auto translate-x-2/4 -translate-y-1/2
+        rotate-0 skew-x-0 skew-y-0 scale-x-100 scale-y-100 py-1 px-1.5 text-xs leading-none
+        text-center whitespace-nowrap align-baseline font-bold bg-white text-gray-500 border
+        border-gray-400 rounded-full z-10;
+    }
+    .modal-btn-container {
+        @apply flex flex-shrink-0 flex-wrap items-center justify-end px-8 mx-2 mt-2 pt-0 pb-8;
+    }
+    .acc-setting-ul{
+        @apply min-w-max absolute hidden bg-white text-base z-50
+          float-left py-2 list-none text-left rounded-lg shadow-lg mt-1
+          m-0 bg-clip-padding border-none
+    }
+    .acc-setting-li{
+        @apply text-sm py-2 px-4 font-normal block w-full whitespace-nowrap
+              bg-transparent text-gray-700 hover:bg-gray-100 active:bg-gray-100 focus:bg-gray-100
+    }
+    .list-component{
+        @apply inline-block mx-1;
+    }
+    
+}
+
+/* web component */
+@layer components {
+    .primary-btn-ui {
+        @apply px-7 py-3 text-white font-medium text-sm leading-snug uppercase
+        shadow-md hover:bg-black hover:shadow-lg focus:bg-black focus:shadow-lg
+        focus:outline-none focus:ring-0 active:bg-black active:shadow-lg transition
+        duration-150 ease-in-out primary-font;
+    }
+    .input-ui {
+        @apply px-1 text-sm py-1.5 font-normal text-gray-700 bg-white bg-clip-padding
+        border-b border-solid border-gray-300 m-0 focus:text-gray-700 focus:bg-white
+        focus:outline-none active:outline-none active:ring-0
+         w-full;
+    }
+    .nav-container{
+        @apply relative w-full flex-wrap items-center justify-between py-0 bg-white text-gray-500
+         navbar-light border-b border-solid border-gray-300 hover:text-gray-700 focus:text-gray-700
+    }
+    .nav-btn{
+        @apply navbar-toggler text-gray-500 border-0 hover:shadow-none hover:no-underline
+        py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none
+        focus:no-underline
+    }
+    .color-check-input{
+        @apply form-check-input appearance-none rounded-full h-5 w-5 border
+        focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center
+        bg-contain float-left mr-1 cursor-pointer
+          
+    }
+    .nav-ul{
+        @apply bg-white text-base
+            z-50 float-left py-2 list-none text-left rounded-lg shadow-lg
+            mt-1 m-0 bg-clip-padding border-none left-auto right-0
+    }
+    .nav-ul-a{
+        @apply text-[13px] py-2 px-4 font-normal block
+            w-full whitespace-nowrap bg-transparent text-gray-700
+            hover:bg-gray-100 primary-font
+    }
+    .review-text{
+        @apply text-sm font-medium  primary-font dark:text-white
+    }
+    .review-name{
+        @apply text-sm font-medium  primary-font dark:text-white
+    }
+    .product-price-container{
+        @apply  md:pt-2 pt-2 mb-1 primary-font
+    }
+    .product-name{
+        @apply text-black text-sm primary-font font-medium
+    }
+    .product-price{
+        @apply text-red-700 text-[13px] lining-nums primary-font inline-block font-bold pr-1
+    }
+    .product-normal-price{
+        @apply text-black text-[13px] lining-nums primary-font inline-block font-bold
+    }
+
+    .product-reduce-price{
+        @apply text-gray-700 text-[13px] line-through decoration-gray-700 primary-font inline-block
+    }
+    .discount-container{
+        @apply absolute top-2 left-0 z-10
+    }
+    .discount-percent{
+        @apply inline-block text-[10px] sm:text-xs py-1.5 px-2 leading-none text-center whitespace-nowrap
+        align-baseline font-bold bg-red-600 text-white
+    }
+    .product-img{
+        @apply w-full aspect-[2/3] rounded-t-sm rounded-b-sm
+    }
+    .trending-img-container{
+        @apply px-3 w-52 py-3 mx-0
+    }
+    .collection-img-container{
+        @apply w-1/3 md:w-1/4 h-full relative block mx-2
+    }
+    .collection-img{
+        @apply h-56 md:h-[28rem] 2xl:h-[32.5rem]  w-full
+    }
+    .flashsale-tittle{
+        @apply mb-0.5 text-ellipsis w-full overflow-hidden whitespace-nowrap
+    }
+    .flashsale-img-box{
+        @apply  justify-center mr-0
+    }
+    .flashsale-img{
+        @apply w-full h-full sm:w-56 sm:h-48 xl:h-64 lg:h-64 rounded 2xl:w-64 2xl:h-72 
+    }
+
+    .product-img2{
+        @apply w-full h-full sm:w-56 sm:h-48 xl:h-64 lg:h-64 rounded 2xl:w-64 2xl:h-72 
+    }
+
+    .product-img-3-4{
+        @apply w-full h-full aspect-[3/4] rounded
+    }
+    .flashsale-img-box2{
+        @apply flex justify-center mx-6 w-1/3 sm:w-auto md:w-auto
+    }
+
+    .product-img-sm{
+        @apply w-full h-36 sm:w-56 sm:h-64 rounded 2xl:w-64 2xl:h-72 
+    }
+    .flashsale-img-box-sm{
+        @apply flex justify-center mx-0
+    }
+    .category-sidebar-list-title{
+        @apply text-sm font-semibold text-black primary-font tracking-wide
+    }
+    .category-sidebar-list-size{
+        @apply inline-block text-gray-500 pr-4 text-xs  primary-font
+        
+    }
+    .profile-sidebar-list-title{
+        @apply text-base font-medium text-black 
+    }
+
+    .product-container{
+        @apply flex justify-center px-2 md:px-3 w-1/2 md:w-1/4 2xl:w-1/5 mb-6
+    }
+    .product-container>div{
+        @apply bg-white relative w-full md:w-full
+    }
+    .product-container div a .product-img2{
+        @apply h-48 md:h-80 2xl:h-72 w-full
+    }
+
+    .test-tabs-a{
+        @apply nav-link w-full block font-medium text-xs leading-tight text-gray-400
+                border-x-0 border-t-0 border-b-0 border-transparent px-0 py-3
+                my-2 hover:border-transparent focus:border-transparent active:text-black
+    }
+    .nav-tabs .test-tabs-a{
+        color:rgb(156 163 175);
+    }
+    .nav-tabs .test-tabs-a.active {
+        @apply text-black
+    }
+    .tab-ul .tab-a.active{
+        @apply text-black
+    }
+    .product-color-select{
+        @apply form-check-input appearance-none rounded-full h-4 w-4 border
+        focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center
+        bg-contain float-left mr-0.5 cursor-pointer
+          
+    }
+    .item-select-box{
+        @apply py-1 px-2 mr-1 my-1 text-gray-600 text-sm primary-font break-all
+    }
+
+    .item-select-box-selected{
+        @apply px-2.5 py-1 bg-white border-2 border-black text-black after:content-['x'] after:pl-4
+    }
+    .profile-sidebar-title{
+        @apply text-base text-black font-semibold
+
+    }
+    .profile-sidebar-group{
+        @apply pl-0 mt-0 mb-2 pt-1
+    }
+    .profile-sidebar-list{
+        @apply block text-gray-500 pr-4 text-sm leading-6 py-0.5
+    }
+    .profile-section-title{
+        @apply text-base text-black font-semibold
+    }
+    .profile-product-box{
+        @apply w-full relative block 
+    }
+    .profile-product-img{
+        @apply w-full aspect-[3/4]
+    }
+    .tab-ul{
+        @apply nav-tabs flex flex-row md:flex-row flex-wrap list-none border-b-0 pl-0
+    }
+    .tab-li{
+        @apply 
+    }
+    .tab-a{
+        @apply primary-font nav-link block font-medium text-base text-gray-400 dark:text-gray-400 border-x-0 border-t-0 border-b-2 border-transparent
+                px-6 py-3 hover:border-transparent dark:hover:bg-gray-900 dark:hover:text-gray-100 focus:border-transparent
+    }
+    /* .nav-tabs .nav-link.active{
+        @apply text-black border-black
+    } */
+    .tab-content-ul{
+        @apply flex flex-row space-x-4 pl-0 
+    }
+    .link-a{
+        @apply text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0 text-xs primary-font
+    }
+
+    .nav-tabs .nav-link.active{
+        @apply text-black dark:text-white border-black dark:border-gray-400
+    }
+    .noti-tabs .noti-link.active{
+        @apply text-black dark:text-white border-black dark:border-gray-400
+    }
+    .web-title{
+        @apply text-xl text-black font-medium primary-font
+    }
+    .text-small{
+        @apply text-sm primary-font
+    }
+
+    /* feature brand in home  */
+    .feature-brand-container{
+        @apply block relative w-1/2
+    }
+    .feature-brand-image-container{
+        @apply relative h-0 pr-[100%] sm:pb-[75%] pb-[66%]
+    }
+    .feature-brand-image{
+        @apply absolute top-0 left-0 w-full h-full
+    }
+
+    /* recommendedforU in home */
+    .rmd-product-container{
+        @apply justify-center mr-0
+    }
+    .rmd-img-box{
+        @apply pl-[100%] block relative pb-[133%] mb-3
+    }
+    .rmd-img{
+        @apply w-full h-full absolute top-0 left-0
+    }
+    .rmd-label-container{
+        @apply  pt-0 
+    }
+    .rmd-label-inner-container{
+        @apply flex justify-between
+    }
+    .color-select-box{
+        @apply inline-block mr-0.5
+    }
+    .color-select-container{
+        @apply relative block
+    }
+    .color-select-input{
+        @apply absolute opacity-0 top-0 bottom-0 h-full w-full cursor-pointer
+    }
+    .checkmark1,.checkmark2{
+        @apply  text-[10px] sm:text-base mt-1 cursor-pointer
+    }
+    .rmd-main-container{
+        @apply grid grid-flow-row gap-x-6 sm:grid-rows-1 grid-rows-1 
+            grid-cols-2 sm:grid-cols-4 md:grid-cols-6 2xl:grid-cols-6
+            2xl:w-5/6 md:w-11/12 w-full px-3 2xl:px-0 md:px-0 lg:px-0 mx-auto mb-6
+    }
+
+
+
+    .navbar-title{
+        @apply text-sm primary-font text-black
+    }
+
+    .navbar-group{
+        @apply pl-1 mt-0 mb-2 pt-1
+    }
+    .navbar-list-title{
+        @apply text-[13px] font-light text-gray-700 py-1 primary-font
+    }
+    .nav-brand-img-box{
+        @apply w-1/3 sm:w-1/5 mx-2 my-3
+    }
+    .nav-brand-img{
+        @apply  w-10 h-10
+    }
+    .nav-list-text{
+        @apply hover:text-black focus:text-gray-700 p-0 text-xs text-gray-500 primary-font
+    }
+    .navbar-img-container{
+        @apply mx-[2%] relative pr-[18%] pb-[27.5%] h-0
+    }
+    .navbar-img{
+        @apply  absolute left-0 top-0 h-full w-full
+    }
+
+    .collection-img-inner-container{
+        @apply relative aspect-[2/3] 2xl:aspect-[3/4] mb-2
+    }
+    .style-collection-text-box{
+        @apply relative block px-2
+    }
+    .style-collection-tittle{
+        @apply text-black font-extrabold text-xs sm:text-lg mb-1.5
+    }
+    .style-collection-detail{
+        @apply text-gray-800 text-xs md:text-xs mb-2
+    }
+    .related-product{
+
+    }
+
+    .style-tittle{
+        @apply text-black font-medium text-xs sm:text-sm mb-1.5
+    }
+    .style-price{
+        @apply text-gray-800 text-xs md:text-xs mb-2
+    }
+
+    .related-product-img-container{
+        @apply w-full h-full rounded-t-sm rounded-b-sm
+    }
+    .related-product-img{
+        @apply w-full h-full rounded-t-sm rounded-b-sm
+    }
+    .gray-border-b{
+        @apply border-b border-solid border-gray-200
+    }
+    .navbar-container-2nd{
+        @apply relative w-full flex flex-wrap items-center justify-between pl-2
+                pt-1.5 bg-white
+    }
+    .product-name-pl{
+        @apply text-gray-500 text-[13px] primary-font font-bold tracking-wide text-left
+    }
+    .product-price-pl{
+        @apply text-red-700 text-sm lining-nums primary-font font-bold
+    }
+    .product-reduce-price-pl{
+        @apply text-black opacity-50 text-sm ml-2 line-through decoration-black primary-font
+    }
+    .tab-ul-pl{
+        @apply nav-tabs block list-none border-b-0 pl-0 mb-3 mx-1 md:mx-4
+    }
+
+    .product-name-flashsale{
+        @apply text-gray-500 text-[13px] primary-font font-bold tracking-wide
+    }
+    .product-price-flashsale{
+        @apply text-red-700 text-[13px] lining-nums font-bold
+    }
+    .product-reduce-price-flashsale{
+        @apply text-black opacity-50 text-[13px] ml-2 line-through decoration-black primary-font
+    }
+
+    .shopping-cart{
+        @apply bg-black text-white pt-2.5 px-6 text-sm primary-font
+    }
+    .search-input{
+        @apply bg-transparent border-0 py-2 focus:ring-0 focus:outline-none primary-font
+    }
+    .close-modal-btn{
+        @apply text-xs box-content w-4 h-4 p-1 text-black border-none rounded-none
+            opacity-50 focus:shadow-none focus:outline-none focus:opacity-100
+            hover:text-black hover:opacity-75 hover:no-underline
+    }
+
+    /* .style-product-container:nth-child(4n){
+        @apply flex-col
+    }
+    .style-product-container:nth-child(4n - 1){
+        @apply flex-col-reverse
+    } */
+    .style-inner-container{
+        @apply  relative flex
+    }
+    .brand-name{
+        @apply text-sm text-gray-900 tracking-widest pb-2
+    }
+    .brand-product-name{
+        @apply text-gray-500 text-xl font-light mb-2
+    }
+    .brand-product-price{
+        @apply text-gray-900 md:text-sm text-2xl md:mb-1 mb-0.5 primary-font
+    }
+    .brand-product-reduce-price{
+        @apply text-gray-700 dark:text-gray-400 md:text-sm text-xl primary-font md:mb-4 mb-0.5 line-through decoration-red-600
+    }
+    .variation-name{
+        @apply text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r
+    }
+    .sub-variation-name{
+        @apply text-sm w-4/6 text-gray-900 font-light px-6 py-4 whitespace-nowrap border-r
+    }
+    .t-base-black{
+        @apply text-black text-base
+    }
+    .color-active2{
+        @apply border-[3px] border-solid border-gray-600
+    }
+    
+}

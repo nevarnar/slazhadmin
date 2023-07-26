@@ -1,0 +1,48 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production",
+        "scss": "node-sass --watch scss -o css"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.2",
+        "axios": "^0.21.4",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14"
+    },
+    "dependencies": {
+        "@cometchat-pro/chat": "^3.0.2-beta1",
+        "@tinymce/tinymce-vue": "^3.2.8",
+        "emoji-mart-vue-fast": "^7.0.7",
+        "dateformat": "^4.5.1",
+        "moment": "^2.29.4",
+        "node-sass": "^7.0.1",
+        "postcss": "^8.4.7",
+        "sass": "^1.49.9",
+        "sass-loader": "^12.6.0",
+        "tailwindcss": "^3.0.23",
+        "tinymce": "^6.3.1",
+        "tw-elements": "^1.0.0-alpha11",
+        "twemoji": "^13.1.0",
+        "vue": "^2.6.12",
+        "vue-color": "^2.8.1",
+        "vue-easy-lightbox": "^0.23.0",
+        "vue-i18n": "8",
+        "vue-loader": "^15.9.7",
+        "vue-multiselect": "^2.1.6",
+        "vue-router": "^4.0.13",
+        "vue-sweetalert2": "^5.0.2",
+        "vue-template-compiler": "^2.6.14",
+        "vue2-datepicker": "^3.11.0",
+        "vue2-timepicker": "^1.1.6",
+        "vuejs-countdown": "^0.2.1",
+        "vuex": "^3.6.2"
+    }
+}

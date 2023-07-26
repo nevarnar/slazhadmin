@@ -1,0 +1,206 @@
+@import url('font/Montserrat/Montserrat-light.ttf');
+
+@font-face {
+  font-family: 'MyWebFont';
+  src:  url('../font/Montserrat/Montserrat-Regular.ttf') format('truetype'),
+        
+}
+.primary-font{
+    font-family: 'MyWebFont',sans-serif;
+}
+@font-face {
+  font-family: 'MyWebFontBold';
+  src:  url('../font/Montserrat/Montserrat-SemiBold.ttf') format('truetype'),
+        
+}
+.primary-font-bold{
+    font-family: 'MyWebFontBold',sans-serif;
+}
+
+.font-13px{
+    font-size: 13px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+color: black!important;
+}
+.trending-slick .slick-prev{
+    display: none!important;
+}
+
+.check-container{
+    cursor: pointer;
+}
+.checkMark{
+    color: rgb(205, 212, 224);
+    // padding: 4px 8px;
+    
+}
+.checkMark::before{
+    position: relative;
+    top:1px;
+}
+.check-container input:checked ~ .checkMark {
+    color: #888;
+    // padding: 8px;
+    // background-color: #aaa;
+    // border-radius: 100%;
+    // color: blue;
+    // text-shadow: 0px 0px 4px #fff;
+}
+
+input[type="checkbox"].test_checky:checked + i {
+    color: blue!important;
+    
+}
+// .material-select-box-selected::after{
+//     content: 'x';
+// }
+
+
+
+
+.profile-sidebar-title{
+       font-family: 'MyWebFont';
+
+}
+.profile-sidebar-group{
+       font-family: 'MyWebFont';
+       
+}
+.profile-sidebar-list{
+       font-family: 'MyWebFont';
+        
+}
+.input-ui{
+       font-family: 'MyWebFont';
+}
+.primary-font{
+    font-family: 'MyWebFont';
+}
+
+.profile-section-title{
+    @extend .primary-font;
+}
+.primary-button{
+    @extend .primary-font;
+}
+
+//tabs
+//   .nav-tabs .nav-link.active{
+//     color: black;
+//     border-color: black;
+// }
+input[type="radio"] {
+    accent-color: magenta;
+}
+.scroll-container,
+  .scroll-area {
+    max-width: 850px;
+    height: 300px;
+    font-size: 60px;
+  }
+
+  .scroll-container {
+    overflow: auto;
+    scroll-snap-type: y mandatory;
+    height: 500px;
+  }
+
+  .scroll-area {
+    scroll-snap-align: start;
+  }
+
+  .scroll-container,
+  .scroll-area {
+    margin: 0 auto;
+  }
+
+  .scroll-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+
+  .scroll-area:nth-of-type(1) {  background: IndianRed; }
+  .scroll-area:nth-of-type(2) {  background: Moccasin; }
+  .scroll-area:nth-of-type(3) {  background: thistle; }
+  .scroll-area:nth-of-type(4) {  background: seagreen; }
+
+
+.test-demo-div {
+  border-inline: 10px dashed seagreen;
+}
+.checkmark1{
+  display: none;
+}
+.check-container input:checked ~ .checkmark1 {
+  display:block;
+}
+.check-container input:checked ~ .checkmark2{
+  display:none;
+}
+.color-select-container{
+    cursor: pointer;
+}
+.color-select-container input:checked ~ .checkmark1 {
+  display:block;
+}
+.color-select-container input:checked ~ .checkmark2{
+  display:none;
+}
+
+.style-item-container{
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;
+  // margin-bottom: 1.5rem;
+}
+
+.style-item-container:nth-child(4n){
+    flex-direction: row-reverse;
+    text-align: right;
+    }
+.style-item-container:nth-child(4n - 1){
+    flex-direction: row-reverse;
+    text-align: right;
+    }
+.style-item-container:nth-child(4n) .style-inner-container{
+    justify-content: end;
+    }
+.style-item-container:nth-child(4n - 1) .style-inner-container{
+    justify-content: end;
+    }
+
+@media only screen and (max-width: 1024px) {
+  .style-item-container:nth-child(odd){
+    flex-direction: row;
+    text-align: left;
+  }
+  .style-item-container:nth-child(even){
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+  .style-item-container:nth-child(odd) .style-inner-container{
+    justify-content: start;
+  }
+  .style-item-container:nth-child(even) .style-inner-container{
+    justify-content: end;
+  }
+  // .color-active{
+  //   border: 4px solid #111;
+  //   border-radius: 99px;
+  // }
+  
+}
+.multiselect__tags {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    }
+.tox-notifications-container{
+  display: none!important;
+}
